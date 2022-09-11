@@ -31,7 +31,7 @@ const RoleApi = ({ children }) => {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 }
             });
-            console.log(response.data)
+            setRoleList(response.data)
         } catch (error) {
             console.log(error.response.data)
         }
