@@ -4,9 +4,6 @@ import { toast } from 'react-toastify';
 export const authApiContext = React.createContext();
 
 const AuthApi = ({ children }) => {
-
-
-
     const [resData, setResData] = useState(null);
     const [resError, setResError] = useState(null);
 
