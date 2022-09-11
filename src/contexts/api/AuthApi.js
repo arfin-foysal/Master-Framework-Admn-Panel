@@ -31,10 +31,6 @@ const AuthApi = ({ children }) => {
                 toast.success(response.data.messages);
                 localStorage.setItem('token', response.data.token);
                 localStorage.setItem('user', JSON.stringify(response.data.user));
-
-                if(response.data.token){
-                    window.location.reload(false)
-                }
             } catch (error) {
                 toast.error(error.response.data.messages);
             }

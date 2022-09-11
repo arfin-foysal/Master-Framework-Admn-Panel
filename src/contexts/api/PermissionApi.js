@@ -6,7 +6,8 @@ export const permissionApiContext = React.createContext();
 const PermissionApi = ({children}) => {
     const [resData, setResData] = useState(null);   
     const [resError, setResError] = useState(null);
-    const [permissionListAllData,setPermissionList]=React.useState([]);
+    const [permissionListAllData, setPermissionList] = useState([]);
+    const [loading, setLoading] = useState(false);
     const createPermission = async (data) => {
 
         try {
@@ -33,6 +34,7 @@ const PermissionApi = ({children}) => {
             });
 
             setPermissionList(response.data)
+            setLoading(false); // Stop loading
         } catch (error) {
             console.log(error.response.data)
         }
@@ -74,7 +76,7 @@ const PermissionApi = ({children}) => {
 
 
   return (
-      <permissionApiContext.Provider value={{ createPermission, resData, resError ,permissionListAllData,permissionList,permissionUpdate,permissionDelete}}>
+      <permissionApiContext.Provider value={{loading, createPermission, resData, resError ,permissionListAllData,permissionList,permissionUpdate,permissionDelete}}>
           {children}
         </permissionApiContext.Provider>
   )

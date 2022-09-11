@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Button, Card, Col, Form, Row, Table } from 'react-bootstrap';
+import { Button, Card, Col, Form, Row, Spinner, Table } from 'react-bootstrap';
 import { permissionApiContext } from '../../contexts/api/PermissionApi';
 import PermissionAllListTable from './PermissionAllListTable';
 
 const Permission = () => {
-  const { createPermission, resData, permissionList, permissionListAllData, permissionUpdate } = useContext(permissionApiContext);
+  const { loading,createPermission, resData, permissionList, permissionListAllData, permissionUpdate } = useContext(permissionApiContext);
 
   const [allData, setData] = useState({
     perm_name: '',
@@ -80,7 +80,7 @@ const Permission = () => {
                   <th>Action</th>
                 </tr>
               </thead>
-              {permissionListAllData.map((item) => (
+              { loading ? <Spinner animation="grow" variant="info" />: permissionListAllData.map((item) => (
                 <PermissionAllListTable key={item.id} item={item} permissionUpdate={permissionUpdate} permissionList={permissionList} />
               ))}
             </Table>

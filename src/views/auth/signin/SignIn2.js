@@ -18,15 +18,17 @@ const SignIn2 = () => {
     password: ''
   });
   const handleChange = (e) => setData({ ...allData, [e.target.name]: e.target.value });
-
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     await signin(allData);
     // after submit allData
     setData({
       email: '',
       password: ''
     });
+    // if(localStorage.getItem('token')){
+    //   window.location.reload(false)
+  // }
   };
 
   return (
