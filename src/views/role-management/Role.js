@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { Suspense, useContext, useState } from 'react'
 import { useEffect } from 'react';
 import { Button, Card, Col, Form, Row, Table } from 'react-bootstrap'
 import { roleApiContext } from '../../contexts/api/RoleApi';
@@ -35,7 +35,7 @@ const Role = () => {
   }
 
   return (
-    <>
+    <Suspense fallback="Loding...">
         <Col sm={12} >
           <Card >
             <Card.Header>
@@ -94,7 +94,7 @@ const Role = () => {
           </Card.Body>
         </Card>
       </Col>
-    </>
+    </Suspense>
   )
 }
 
