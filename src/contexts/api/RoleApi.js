@@ -1,12 +1,12 @@
 import axios from 'axios';
 import React from 'react'
-import { useEffect } from 'react';
+import { useEffect, useState} from 'react';
 
 export const roleApiContext = React.createContext();
 
 const RoleApi = ({ children }) => {
-    const [roleListAllData, setRoleList] = React.useState([]);
-
+    const [roleListAllData, setRoleList] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     const createRole = async (data) => {
         try {
@@ -34,6 +34,7 @@ const RoleApi = ({ children }) => {
                 }
             });
             setRoleList(response?.data)
+            setLoading(false); // Stop loading
         } catch (error) {
             console.log(error.response.data)
         }
@@ -75,7 +76,7 @@ const RoleApi = ({ children }) => {
 
 
   return (
-      <roleApiContext.Provider value={{ createRole,roleList,roleListAllData, roleUpdate,roleDelete}}>
+      <roleApiContext.Provider value={{ loading,createRole,roleList,roleListAllData, roleUpdate,roleDelete}}>
           {children}
         </roleApiContext.Provider>
   )
