@@ -5,7 +5,8 @@ import { useEffect } from 'react';
 export const roleApiContext = React.createContext();
 
 const RoleApi = ({ children }) => {
-    const[roleListAllData,setRoleList]=React.useState([]);
+    const [roleListAllData, setRoleList] = React.useState([]);
+    
 
     const createRole = async (data) => {
         try {
@@ -16,7 +17,8 @@ const RoleApi = ({ children }) => {
                 }
             });
             
-            console.log(response.data)
+            console.log(response?.data);
+            
             roleList()
         } catch (error) {
             console.log(error.response.data)
