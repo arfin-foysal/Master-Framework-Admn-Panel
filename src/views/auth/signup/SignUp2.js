@@ -34,7 +34,7 @@ const SignUp2 = () => {
       password: '',
     });
     
-    // history.push("/");
+    window.location.replace('/dashboard/auth/signin')  
   };
 
   // useEffect(() => {
